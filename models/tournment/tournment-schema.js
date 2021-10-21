@@ -118,7 +118,7 @@ let fields = {
     },
     botsActivation: {
         type: Boolean,
-        default: false
+        default: true
     },
     totalBots: {
         type: Number
@@ -127,6 +127,9 @@ let fields = {
         type: Number
     },
     mustWinBots: {
+        type: Number
+    },
+    minPlayer: {
         type: Number
     }
 };

@@ -20,9 +20,9 @@ async function createTournment(req, res, next) {
         //     throw validationError("can created by subadmin")
         // }
         console.log("here:", req.body);
-        res.data = TournmentModel.createTournment(req.body);
+        //res.data = TournmentModel.createTournment(req.body);
         console.log(res.data)
-        //res.data = TournmentModel.createTournment(req.body, req.user._id);
+        res.data = TournmentModel.createTournment(req.body, req.user._id);
         next();
     } catch (ex) {
         errors.handleException(ex, next);
