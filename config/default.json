@@ -1,0 +1,19 @@
+{
+    "port": "5200",
+    "security": {
+        "tokenLife": 7200
+    },
+    "mongoose": {
+        "uri": "mongodb+srv://admin:EZ4nBUSTTC6Zmrrd@cluster0.9n3ns.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "options": {
+            "useNewUrlParser": true,
+            "useUnifiedTopology": true,
+            "auto_reconnect": true
+        }
+    },
+    "aws":{
+        "AWS_ACCESS_KEY": "AKIAUQHY3HU5LDMUSMH3",
+        "AWS_SECRET_KEY" : "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"
+    },
+    "env": "development"
+}

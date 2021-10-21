@@ -1,0 +1,37 @@
+{
+  "name": "bounty-bunch-admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@kshith",
+  "license": "ISC",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "async": "^3.2.1",
+    "aws-sdk": "^2.960.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.12",
+    "nodemon": "^2.0.14",
+    "oauth2orize": "^1.11.0",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-oauth2-client-password": "^0.1.2",
+    "randomstring": "^1.2.1",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
+  }
+}
