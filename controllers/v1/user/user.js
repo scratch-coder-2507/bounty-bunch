@@ -4,6 +4,7 @@ let errors = require('errors/index');
 let validationError = errors.ValidationError;
 const userLogModel = mongoose.model('user_logs');
 const moment = require('moment');
+const TournmentModel = require('../../../models/tournment');
 module.exports = {
     createUser,
     getUsers,
@@ -14,7 +15,8 @@ module.exports = {
     getUserLogs,
     enableDisableSubAdmin,
     getSubAdminById,
-    editSubAdmin
+    editSubAdmin,
+    createBot
 };
 
 async function createUser(req, res, next) {
@@ -28,6 +30,41 @@ async function createUser(req, res, next) {
         next();
     } catch (ex) {
         errors.handleException(ex, next);
+    }
+}
+
+async function createBot (req, res, next) { 
+    try {
+        const tournament = await TournmentModel.findOne({_id: req.body.id});
+        //let totalBots = tournament.totalBots;
+        let username = Math.floor(Math.random() * 30000000);
+        if(req.body.botType === 'Fairplay') {
+            for (var i = 0; i < 20; i++) {
+                var usernames = 0;
+                for (var j = 0; j < Math.floor(Math.random() * 20); j++) {
+                    usernames++;
+                }
+                console.log(usernames);
+            }
+            for(i=0; i<3; i++) {
+                const bots = new UserModel({
+                    userName: `bb${usernames}`,
+                    isBot: true,
+                    botType: 'Fairplay',
+                    botAvailability: 'Available',
+                });
+                await bots.save();
+                console.log(bots)
+                res.json({
+                    message: 'bots created',
+                    data: bots
+                });
+            }
+            
+        }
+        
+    } catch (err) {
+        errors.handleException(err, next);
     }
 }
 

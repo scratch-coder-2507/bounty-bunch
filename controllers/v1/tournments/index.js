@@ -37,10 +37,5 @@ module.exports = [
         allUsers: true,
         controller: tournmentController.enableDisableTournment
     },
-    {
-        path: '/bot-creation',
-        method: 'post',
-        allUser: true,
-        controller: tournmentController.createBots
-    },
+    
 ]

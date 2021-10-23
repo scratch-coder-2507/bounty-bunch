@@ -22,7 +22,7 @@ module.exports = [
         path: "/create-bot",
         method: "post",
         public: true,
-        controller: userController.createUser
+        controller: userController.createBot
     },
     {
         path: "/",

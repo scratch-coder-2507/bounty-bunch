@@ -111,6 +111,9 @@ let fields = {
         type: Boolean,
         default: true
     },
+    types: {
+        type: String
+    },
     status: {
         type: String,
         enum: 'Inactive|Active'.split('|'),

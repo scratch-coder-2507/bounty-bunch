@@ -10,7 +10,7 @@ UserSchema.statics = {
     isAdmin,
     isSubAdmin,
     isUser,
-    getUserById
+    getUserById,
 };
 UserSchema.methods = {
     setPassword,
