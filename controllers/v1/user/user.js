@@ -1,9 +1,11 @@
 let mongoose = require('mongoose');
 let UserModel = mongoose.model('user');
+let BotsModel = require('../../../models/bots/bots')
 let errors = require('errors/index');
 let validationError = errors.ValidationError;
 const userLogModel = mongoose.model('user_logs');
 const moment = require('moment');
+const randomstring = require('randomstring');
 const TournmentModel = require('../../../models/tournment');
 module.exports = {
     createUser,
@@ -35,33 +37,57 @@ async function createUser(req, res, next) {
 
 async function createBot (req, res, next) { 
     try {
-        const tournament = await TournmentModel.findOne({_id: req.body.id});
+        //const tournament = await TournmentModel.findOne({_id: req.body.id});
         //let totalBots = tournament.totalBots;
-        let username = Math.floor(Math.random() * 30000000);
-        if(req.body.botType === 'Fairplay') {
-            for (var i = 0; i < 20; i++) {
-                var usernames = 0;
-                for (var j = 0; j < Math.floor(Math.random() * 20); j++) {
-                    usernames++;
-                }
-                console.log(usernames);
-            }
-            for(i=0; i<3; i++) {
-                const bots = new UserModel({
-                    userName: `bb${usernames}`,
-                    isBot: true,
-                    botType: 'Fairplay',
-                    botAvailability: 'Available',
-                });
-                await bots.save();
-                console.log(bots)
-                res.json({
-                    message: 'bots created',
-                    data: bots
-                });
-            }
+        //let username = Math.floor(Math.random() * 300000000);
+        let gender = ['Male', 'Female'];
+        let botType = ['MustWin', 'FairPlay'];
+
+
+        for(i=0; i<20; i++) {
+            let username = randomstring.generate();
+            console.log(username)
+            const bots = new BotsModel({
+                userName: `bb${username}`,
+                isBot: true,
+                botType: botType[Math.floor(Math.random() * botType.length)],
+                botAvailability: 'Available',
+                gender: gender[Math.floor(Math.random() * gender.length)],
+            });
+            await bots.save();
+            console.log(bots)
+            res.json({
+                message: 'bots created',
+                data: bots
+            });
+        
+
+    //     let data = [{
+    //         userName: `bb${username}`,
+    //         isBot: true,
+    //         botType: botType[Math.floor(Math.random() * botType.length)],
+    //         botAvailability: 'Available',
+    //         gender: gender[Math.floor(Math.random() * gender.length)],
+    //     }];
+
+    //     let botsArr = [];
+
+    //     data.forEach(datanum => {
+    //         botsArr.push({
+    //         userName: `bb${username}`,
+    //         isBot: datanum.true,
+    //         botType: datanum.botType[Math.floor(Math.random() * botType.length)],
+    //         botAvailability: 'Available',
+    //         gender: datanum.gender[Math.floor(Math.random() * gender.length)],
+    //         })
+    //     });
+
+    //     await BotsModel.insertMany(botsArr, ans => {
+    //         console.log(ans);
+    //     });
+    }
+        
             
-        }
         
     } catch (err) {
         errors.handleException(err, next);

@@ -19,6 +19,9 @@ let fields = {
     userName: {
         type: String,
     },
+    gender: {
+        type: String
+    },
     email: {
         type: String,
     },
@@ -79,9 +82,9 @@ let fields = {
 
 let Schema = require('utils/generate-schema')(fields);
 
-Schema.index({ email: 1 }, { unique: true, background: true });
-Schema.index({ email: 1, fullName: 1, role: 1 }, { background: true });
-Schema.index({ phoneNumber: 1 }, { background: true });
+//Schema.index({ email: 1 }, { background: true });
+//Schema.index({ email: 1, fullName: 1, role: 1 }, { background: true });
+//Schema.index({ phoneNumber: 1 }, { background: true });
 
 
 Schema.virtual('password')

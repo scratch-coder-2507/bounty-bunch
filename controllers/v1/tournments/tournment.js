@@ -21,7 +21,7 @@ async function createTournment(req, res, next) {
         // }
         console.log("here:", req.body);
         //res.data = TournmentModel.createTournment(req.body);
-        console.log(res.data)
+        console.log('User Id', req.user)
         res.data = TournmentModel.createTournment(req.body, req.user._id);
         next();
     } catch (ex) {

@@ -4,7 +4,7 @@ module.exports = [
     {
         path: '/',
         method: 'post',
-        public: true,
+        allUsers: true,
         controller: tournmentController.createTournment
     },
     {
